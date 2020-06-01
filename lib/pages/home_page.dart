@@ -13,13 +13,22 @@ class _HomePageState extends State<HomePage> {
 
 String mainProfilePicture = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTaRfDgknGmMT7gJRyrVXvRWG0S-7sNqszmCcRL9E7wtRt-Kl7_&usqp=CAU";
 String otherProfilePicture = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSabxAgg_xMG1IQ7HoK18SEjIVpTaythWjU4nQ2fAqbycREyV7i&usqp=CAU";
+String otherProfilePicture2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxgzgNMDitMIeVgBnMg6Yl_b335BJDQW0k3dcuaV90H0335Oku&usqp=CAU";
 
-void switchUser(){
+void switchUser(int x){
   String backupString = mainProfilePicture;
-  this.setState(() {
+  if(x == 1){
+    this.setState(() {
     mainProfilePicture = otherProfilePicture;
     otherProfilePicture = backupString;
-  });
+    });
+  }
+  if(x == 2){
+    this.setState(() {
+    mainProfilePicture = otherProfilePicture2;
+    otherProfilePicture2 = backupString;
+    });
+  }
 }
  
   @override
@@ -39,12 +48,12 @@ void switchUser(){
               ),
               otherAccountsPictures: <Widget>[
                 new GestureDetector(
-                onTap: () => switchUser(),
+                onTap: () => switchUser(1),
                 child: new CircleAvatar(backgroundImage: new NetworkImage(otherProfilePicture),)
               ),
               new GestureDetector(
-                onTap: () => switchUser(),
-                child: new CircleAvatar(backgroundImage: new NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSxgzgNMDitMIeVgBnMg6Yl_b335BJDQW0k3dcuaV90H0335Oku&usqp=CAU"),)
+                onTap: () => switchUser(2),
+                child: new CircleAvatar(backgroundImage: new NetworkImage(otherProfilePicture2),)
               ),
               ],
               decoration: new BoxDecoration(
