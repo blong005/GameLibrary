@@ -21,7 +21,7 @@ void switchUser(){
     otherProfilePicture = backupString;
   });
 }
-
+ 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
