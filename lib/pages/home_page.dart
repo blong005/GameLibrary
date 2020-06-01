@@ -39,57 +39,74 @@ void switchUser(int x){
       drawer: new Drawer(
         child: new ListView(
           children: <Widget>[
-            new UserAccountsDrawerHeader(
-              accountName: new Text("benlo"), 
-              accountEmail: new Text("benlo@gmail.com"),
-              currentAccountPicture: new GestureDetector(
-                onTap: () => print("This is the current user"),
-                child: new CircleAvatar(backgroundImage: new NetworkImage(mainProfilePicture),)
-              ),
-              otherAccountsPictures: <Widget>[
+            new Container(
+              color: Colors.white,
+                child: new UserAccountsDrawerHeader(
+                accountName: new Text("benlo"), 
+                accountEmail: new Text("benlo@gmail.com"),
+                currentAccountPicture: new GestureDetector(
+                  onTap: () => print("This is the current user"),
+                  child: new CircleAvatar(backgroundImage: new NetworkImage(mainProfilePicture),)
+                ),
+                otherAccountsPictures: <Widget>[
+                  new GestureDetector(
+                  onTap: () => switchUser(1),
+                  child: new CircleAvatar(backgroundImage: new NetworkImage(otherProfilePicture),)
+                ),
                 new GestureDetector(
-                onTap: () => switchUser(1),
-                child: new CircleAvatar(backgroundImage: new NetworkImage(otherProfilePicture),)
-              ),
-              new GestureDetector(
-                onTap: () => switchUser(2),
-                child: new CircleAvatar(backgroundImage: new NetworkImage(otherProfilePicture2),)
-              ),
-              ],
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new NetworkImage("https://i2.wp.com/techacute.com/wp-content/uploads/2018/09/psx_20180927_1632497300034299043957445.jpg?resize=696%2C392&ssl=1"),
-                  fit: BoxFit.fill,
-                  )
-              ),
-              ),
-            new ListTile(
+                  onTap: () => switchUser(2),
+                  child: new CircleAvatar(backgroundImage: new NetworkImage(otherProfilePicture2),)
+                ),
+                ],
+                decoration: new BoxDecoration(
+                  image: new DecorationImage(
+                    image: new NetworkImage("https://i2.wp.com/techacute.com/wp-content/uploads/2018/09/psx_20180927_1632497300034299043957445.jpg?resize=696%2C392&ssl=1"),
+                    fit: BoxFit.fill,
+                    )
+                ),
+                ),
+            ),
+            new Container(
+              color: Colors.white,
+              child: new ListTile(
               title: new Text("TicTacToe"),
               trailing: new Icon(Icons.play_circle_outline),
               onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new TicTacToe("TicTacToe"))),
+              ),
             ),
-            new ListTile(
+            new Container(
+              color: Colors.white,
+              child: new ListTile(
               title: new Text("Snake"),
               trailing: new Icon(Icons.play_circle_outline),
               onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new Snake("Snake"))),
+              ),
             ),
-            new ListTile(
+            new Container(
+              color: Colors.white,
+              child: new ListTile(
               title: new Text("Guitar Hero"),
               trailing: new Icon(Icons.play_circle_outline),
               onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new GuitarHero("Guitar Hero"))),
+              ),
             ),
-            new Divider(),
-            new ListTile(
+            new Container(
+              color: Colors.white,
+              child: new Divider()),
+            new Container(
+              color: Colors.white,
+              child: new ListTile(
               title: new Text("Close"),
               trailing: new Icon(Icons.cancel),
               onTap: () => Navigator.of(context).pop(),
+              ),
             ),
           ]
           ,)
       ),
       body: new Center(
         child: new Text("Let's Play a Game",
-          style: new TextStyle(fontSize: 35.0)),
+          style: new TextStyle(fontSize: 35.0),),
       ),
     );
   }
