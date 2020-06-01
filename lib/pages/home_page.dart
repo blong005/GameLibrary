@@ -105,9 +105,24 @@ void switchUser(int x){
           ,)
       ),
       body: new Center(
-        child: new Text("Let's Play a Game",
-          style: new TextStyle(fontSize: 35.0),),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(width: 5.0, color: Colors.white)
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(32.0),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              child: Container(
+              decoration: new BoxDecoration(
+                color: Colors.redAccent,
+              ),
+            ),
+          ),
+        ),
       ),
-    );
+    ));
   }
 }
