@@ -118,6 +118,7 @@ void switchUser(int x){
               child: Container(
               decoration: new BoxDecoration(
                 color: Colors.redAccent,
+                shape: BoxShape.circle,
               ),
             ),
           ),
