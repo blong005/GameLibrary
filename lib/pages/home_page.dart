@@ -104,26 +104,73 @@ void switchUser(int x){
           ]
           ,)
       ),
-      body: new Center(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(width: 5.0, color: Colors.white)
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(32.0),
-            child: Container(
-              width: 40.0,
-              height: 40.0,
-              child: Container(
-              decoration: new BoxDecoration(
-                color: Colors.redAccent,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          new Center(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
+                border: Border.all(width: 5.0, color: Colors.white)
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(32.0),
+                child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  child: Container(
+                  decoration: new BoxDecoration(
+                    color: Colors.redAccent,
+                    shape: BoxShape.circle,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    ));
+    ),
+    new Center(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(width: 5.0, color: Colors.white)
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(32.0),
+                child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  child: Container(
+                  decoration: new BoxDecoration(
+                    color: Colors.greenAccent,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          ),
+    ),
+    new Center(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(width: 5.0, color: Colors.white)
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(32.0),
+                child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  child: Container(
+                  decoration: new BoxDecoration(
+                    color: Colors.blueAccent,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          ),
+    ),
+        ],
+      ));
   }
 }
