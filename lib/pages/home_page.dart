@@ -1,3 +1,5 @@
+import 'package:GameLibrary/pages/CommunityPage.dart';
+import 'package:GameLibrary/pages/FriendsList.dart';
 import 'package:GameLibrary/pages/GuitarHero.dart';
 import 'package:GameLibrary/pages/HighScores.dart';
 import 'package:flutter/material.dart';
@@ -70,25 +72,25 @@ void switchUser(int x){
             new Container(
               color: Colors.white,
               child: new ListTile(
-              title: new Text("TicTacToe"),
-              trailing: new Icon(Icons.play_circle_outline),
-              onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new TicTacToe("TicTacToe"))),
+                title: new Text("TicTacToe"),
+                trailing: new Icon(Icons.play_circle_outline),
+                onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new TicTacToe("TicTacToe"))),
               ),
             ),
             new Container(
               color: Colors.white,
               child: new ListTile(
-              title: new Text("Snake"),
-              trailing: new Icon(Icons.play_circle_outline),
-              onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new Snake("Snake"))),
+                title: new Text("Snake"),
+                trailing: new Icon(Icons.play_circle_outline),
+                onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new Snake("Snake"))),
               ),
             ),
             new Container(
               color: Colors.white,
               child: new ListTile(
-              title: new Text("Guitar Hero"),
-              trailing: new Icon(Icons.play_circle_outline),
-              onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new GuitarHero("Guitar Hero"))),
+                title: new Text("Guitar Hero"),
+                trailing: new Icon(Icons.play_circle_outline),
+                onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new GuitarHero("Guitar Hero"))),
               ),
             ),
             new Container(
@@ -105,113 +107,105 @@ void switchUser(int x){
           ]
           ,)
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HighScores("High Scores")));
-                  },
-                  child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(8.0),),child: Text("My Button"),),
-                ),
-                DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(width: 5.0, color: Colors.white)
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(32.0),
-                child: Container(
-                  width: 40.0,
-                  height: 40.0,
-                  child: Container(
-                    decoration: new BoxDecoration(
-                      color: Colors.redAccent,
-                      shape: BoxShape.circle,
+      body: Container(
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("images/msbg.jpg"), fit: BoxFit.cover),),
+              child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  new GestureDetector(
+                    onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HighScores("High Scores"))),
+                    child: new DecoratedBox(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(width: 5.0, color: Colors.white)
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(32.0),
+                        child: Container(
+                          width: 40.0,
+                          height: 40.0,
+                          child: Container(
+                            decoration: new BoxDecoration(
+                              color: Colors.redAccent,
+                              shape: BoxShape.circle,
+                            ),
+                            //child: Text("    H"),
+                          ),
+                        ),
+                      ),
                     ),
-                    //child: Text("    H"),
                   ),
-                ),
+                  Text("High Scores"),
+                ],
               ),
-            ),
-            
-            Text("High Scores"),
-              ],
-            ),
   
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HighScores("High Scores")));
-                  },
-                  child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(8.0),),child: Text("My Button"),),
-                ),
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(width: 5.0, color: Colors.white)
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(32.0),
-                    child: Container(
-                      width: 40.0,
-                      height: 40.0,
-                      child: Container(
-                        decoration: new BoxDecoration(
-                          color: Colors.greenAccent,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  GestureDetector(
+                      onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new FriendsList("Friends List"))),
+                      child: new DecoratedBox(
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
+                          border: Border.all(width: 5.0, color: Colors.white)
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(32.0),
+                          child: Container(
+                            width: 40.0,
+                            height: 40.0,
+                            child: Container(
+                              decoration: new BoxDecoration(
+                                color: Colors.greenAccent,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                Text("Friends List"),
-              ],
-            ),
+                  Text("Friends List"),
+                ],
+              ),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HighScores("High Scores")));
-                  },
-                  child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(8.0),),child: Text("My Button"),),
-                ),
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(width: 5.0, color: Colors.white)
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(32.0),
-                    child: Container(
-                      width: 40.0,
-                      height: 40.0,
-                      child: Container(
-                        decoration: new BoxDecoration(
-                          color: Colors.blueAccent,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  GestureDetector(
+                      onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new CommunityPage("Community Page"))),
+                      child: new DecoratedBox(
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
+                          border: Border.all(width: 5.0, color: Colors.white)
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(32.0),
+                          child: Container(
+                            width: 40.0,
+                            height: 40.0,
+                            child: Container(
+                              decoration: new BoxDecoration(
+                                color: Colors.blueAccent,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                Text("Community Page"),
-              ],
-            ),
-
-          ],
+                  Text("Community Page"),
+                ],
+              ),
+            ],
+          ),
         ),
       ));
   }
