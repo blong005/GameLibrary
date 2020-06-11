@@ -82,7 +82,7 @@ void switchUser(int x){
               child: new ListTile(
                 title: new Text("Snake"),
                 trailing: new Icon(Icons.play_circle_outline),
-                onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new Snake("Snake"))),
+                onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new Snake())),
               ),
             ),
             new Container(
