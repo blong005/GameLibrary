@@ -104,11 +104,16 @@ void switchUser(int x){
           ]
           ,)
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          new Center(
-            child: DecoratedBox(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                DecoratedBox(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(width: 5.0, color: Colors.white)
@@ -119,58 +124,75 @@ void switchUser(int x){
                   width: 40.0,
                   height: 40.0,
                   child: Container(
-                  decoration: new BoxDecoration(
-                    color: Colors.redAccent,
-                    shape: BoxShape.circle,
+                    decoration: new BoxDecoration(
+                      color: Colors.redAccent,
+                      shape: BoxShape.circle,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-    ),
-    new Center(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(width: 5.0, color: Colors.white)
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(32.0),
-                child: Container(
-                  width: 40.0,
-                  height: 40.0,
-                  child: Container(
-                  decoration: new BoxDecoration(
-                    color: Colors.greenAccent,
+            
+            Text("High Scores"),
+              ],
+            ),
+  
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                DecoratedBox(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
+                    border: Border.all(width: 5.0, color: Colors.white)
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(32.0),
+                    child: Container(
+                      width: 40.0,
+                      height: 40.0,
+                      child: Container(
+                        decoration: new BoxDecoration(
+                          color: Colors.greenAccent,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Text("Friends List"),
+              ],
             ),
-          ),
-    ),
-    new Center(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(width: 5.0, color: Colors.white)
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(32.0),
-                child: Container(
-                  width: 40.0,
-                  height: 40.0,
-                  child: Container(
-                  decoration: new BoxDecoration(
-                    color: Colors.blueAccent,
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                DecoratedBox(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
+                    border: Border.all(width: 5.0, color: Colors.white)
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(32.0),
+                    child: Container(
+                      width: 40.0,
+                      height: 40.0,
+                      child: Container(
+                        decoration: new BoxDecoration(
+                          color: Colors.blueAccent,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Text("Community Page"),
+              ],
             ),
-          ),
-    ),
-        ],
+
+          ],
+        ),
       ));
   }
 }
