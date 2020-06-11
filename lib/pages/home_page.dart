@@ -1,4 +1,5 @@
 import 'package:GameLibrary/pages/GuitarHero.dart';
+import 'package:GameLibrary/pages/HighScores.dart';
 import 'package:flutter/material.dart';
 import './TicTacToe.dart';
 import './Snake.dart';
@@ -113,6 +114,12 @@ void switchUser(int x){
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HighScores("High Scores")));
+                  },
+                  child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(8.0),),child: Text("My Button"),),
+                ),
                 DecoratedBox(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -128,6 +135,7 @@ void switchUser(int x){
                       color: Colors.redAccent,
                       shape: BoxShape.circle,
                     ),
+                    //child: Text("    H"),
                   ),
                 ),
               ),
@@ -141,6 +149,12 @@ void switchUser(int x){
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HighScores("High Scores")));
+                  },
+                  child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(8.0),),child: Text("My Button"),),
+                ),
                 DecoratedBox(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -168,6 +182,12 @@ void switchUser(int x){
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                GestureDetector(
+                  onTap: () {
+                    onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new HighScores("High Scores")));
+                  },
+                  child: Container(padding: EdgeInsets.all(12.0),decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(8.0),),child: Text("My Button"),),
+                ),
                 DecoratedBox(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
