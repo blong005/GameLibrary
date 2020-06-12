@@ -84,7 +84,19 @@ class _SnakeAppState extends State<SnakeApp> {
                       color: color,
                       //color: Colors.yellow[100],
                       shape: BoxShape.circle,
+                      border: Border.all(width: 5.0, color: Colors.white)
                     ),
+                    // child: Padding(
+                    //   padding: EdgeInsets.all(8),
+                    //   child: Container(
+                    //     width: 20,
+                    //     height: 20,
+                    //     decoration: new BoxDecoration(  
+                    //       color: Colors.white54,
+                    //       shape: BoxShape.circle,
+                    //     )
+                    //   ),
+                    //   ),
                   );
                 }
               ),
