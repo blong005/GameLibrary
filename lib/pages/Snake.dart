@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'dart:math';
-//import 'dart:async';
+import 'dart:math';
+import 'dart:async';
 
 
 
@@ -27,10 +27,53 @@ class _SnakeAppState extends State<SnakeApp> {
   var snake = [[0,1], [0,0]];         //snake start position of size 2 units
   var apple = [0, 5];                 //start pos of food
   bool inGame = false;                //flag signals movement
-  var dir = "down";                   //movement direction
+  var direction = "down";                   //movement direction
+
+  var randomGenerator = Random();
 
   void startGame(){
+    const duration = Duration(milliseconds: 500);       //movement speed
+    snake = [
+      [(numSquaresRow / 2).floor(), (numSquaresCol / 2).floor()]    //snake head
+    ];
 
+    snake.add([snake.first[0], snake.first[1] - 1]);                //snake body
+
+    spawnApple();
+    inGame = true;
+    Timer.periodic(duration,(Timer timer) {
+      moveSnake();
+    });
+  }
+
+  void moveSnake(){
+    setState(() {
+      switch(direction){
+        case 'left':
+        snake.insert(0, [snake.first[0] - 1, snake.first[1]]);
+        break;
+
+        case 'right':
+        snake.insert(0, [snake.first[0] + 1, snake.first[1]]);
+        break;
+
+        case 'up':
+        snake.insert(0, [snake.first[0], snake.first[1] - 1]);
+        break;
+
+        case 'down':
+        snake.insert(0, [snake.first[0], snake.first[1] + 1]);
+        break;
+      }
+    });
+  }
+
+  void spawnApple()
+  {
+    apple = [
+      randomGenerator.nextInt(numSquaresRow),
+      randomGenerator.nextInt(numSquaresCol),
+    ];
   }
 
   @override
