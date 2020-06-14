@@ -86,6 +86,22 @@ class _SnakeAppState extends State<SnakeApp> {
       children: <Widget>[
         Expanded(
           child: GestureDetector(
+            onVerticalDragUpdate: (details){                          //DragUpdate for User Input Game Control
+              if(direction != 'up' && details.delta.dy > 0){
+                direction = 'down';
+              }
+              else if(direction != 'down' && details.delta.dy < 0){
+                direction = 'up';
+              }
+            },
+            onHorizontalDragUpdate: (details){
+              if(direction != 'left' && details.delta.dx > 0){
+                direction = 'right';
+              }
+              else if(direction != 'right' && details.delta.dx < 0){
+                direction = 'left';
+              }
+            },
             child: AspectRatio(
               aspectRatio: numSquaresRow / numSquaresCol ,             //Aspect Ratio: width / height , uses double
               child: GridView.builder(
