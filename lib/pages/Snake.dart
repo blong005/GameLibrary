@@ -29,6 +29,10 @@ class _SnakeAppState extends State<SnakeApp> {
   bool inGame = false;                //flag signals movement
   var dir = "down";                   //movement direction
 
+  void startGame(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +44,7 @@ class _SnakeAppState extends State<SnakeApp> {
         Expanded(
           child: GestureDetector(
             child: AspectRatio(
-              aspectRatio: numSquaresRow / numSquaresCol,             //Aspect Ratio: width / height , uses double
+              aspectRatio: numSquaresRow / numSquaresCol ,             //Aspect Ratio: width / height , uses double
               child: GridView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -50,11 +54,10 @@ class _SnakeAppState extends State<SnakeApp> {
                 itemBuilder: (BuildContext context, int index) {
 
                   bool isBody = false;
-
-                  var x = index % numSquaresRow;
+                  var x = index % numSquaresRow;                //calculate x and y pos of body
                   var y = (index / numSquaresRow).floor();
 
-                  //Identifying snake body
+                  //Checking snake body
                   for (var pos in snake){
                     if ( pos[0] == x && pos[1] == y){
                       isBody = true;
@@ -77,7 +80,7 @@ class _SnakeAppState extends State<SnakeApp> {
                     color = Colors.grey[200];
                   }
 
-                  //return container for build
+                  //return container for item build
                   return Container(
                     margin: EdgeInsets.all(1),
                     decoration: BoxDecoration(  
@@ -102,7 +105,29 @@ class _SnakeAppState extends State<SnakeApp> {
               ),
             )
           )
-        )
+        ),
+        Row(                                                        //start button
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            FlatButton(  
+              color: Colors.indigo[200],
+              child: Text('Start'),
+              onPressed: () {
+                if (inGame){
+                  inGame = false;
+                }
+                else{
+                  startGame();
+                }
+              },
+            ),
+            FlatButton(                                             //ScoreBoard
+              color: Colors.indigo[200],
+              child: Text('Score: ${snake.length - 2}'),
+              onPressed: () {},
+              ),
+          ]
+          ,)
        ],
      )
     );
