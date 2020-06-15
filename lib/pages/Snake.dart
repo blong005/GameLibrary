@@ -32,7 +32,7 @@ class _SnakeAppState extends State<SnakeApp> {
   var randomGenerator = Random();
 
   void startGame(){
-    const duration = Duration(milliseconds: 500);       //movement speed
+    const duration = Duration(milliseconds: 300);       //movement speed
     snake = [
       [(numSquaresRow / 2).floor(), (numSquaresCol / 2).floor()]    //snake head
     ];
@@ -43,9 +43,50 @@ class _SnakeAppState extends State<SnakeApp> {
     inGame = true;
     Timer.periodic(duration,(Timer timer) {
       moveSnake();
+      if(checkCrash()){
+        timer.cancel();
+        endGame();
+      }
     });
   }
 
+  bool checkCrash(){                //checks for game ending conditions
+    if(
+      !inGame ||                    //in game flag not high 
+      snake.first[1] < 0 ||                     //snake head not in vertical boundary
+      snake.first[1] > numSquaresCol - 1  ||
+      snake.first[0] < 0 ||                     //snake head not in horizontal boundary
+      snake.first[0] > numSquaresRow - 1  ||
+      checkSelfCrash()                          //snake crashes into body
+      ){
+      return true;
+    }
+    return false;
+  }
+
+  bool checkSelfCrash(){//snake.add([snake.first[0], snake.first[1] - 1]);      
+    bool isBody = false;
+
+    for(int i = 0; i < snake.length; i++ ){
+      if (isBody){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  void endGame(){
+    inGame = false;
+
+    showDialog(context: context,
+    builder: (BuildContext context){
+      return AlertDialog(
+        title: Text('Game Over'),
+        content: Text('Score: ${snake.length - 2}',
+        style: TextStyle(fontSize: 20))
+      );
+    });
+  }
   void moveSnake(){
     setState(() {
       switch(direction){
@@ -65,6 +106,12 @@ class _SnakeAppState extends State<SnakeApp> {
         snake.insert(0, [snake.first[0], snake.first[1] + 1]);
         break;
       }
+
+      if(snake.first[0] != apple[0] || snake.first[1] != apple[1]){
+        snake.removeLast();
+      }
+      else{spawnApple();}
+
     });
   }
 
@@ -102,65 +149,68 @@ class _SnakeAppState extends State<SnakeApp> {
                 direction = 'left';
               }
             },
-            child: AspectRatio(
-              aspectRatio: numSquaresRow / numSquaresCol ,             //Aspect Ratio: width / height , uses double
-              child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: numSquaresRow,
-                ),
-                itemCount: numSquaresRow * numSquaresCol,
-                itemBuilder: (BuildContext context, int index) {
+            child: Align(
+              alignment: Alignment.bottomCenter,
+                child: AspectRatio(
+                aspectRatio: numSquaresRow / (numSquaresCol + 2) ,             //Aspect Ratio: width / height , uses double
+                child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: numSquaresRow,
+                  ),
+                  itemCount: numSquaresRow * numSquaresCol,
+                  itemBuilder: (BuildContext context, int index) {
 
-                  bool isBody = false;
-                  var x = index % numSquaresRow;                //calculate x and y pos of body
-                  var y = (index / numSquaresRow).floor();
+                    bool isBody = false;
+                    var x = index % numSquaresRow;                //calculate x and y pos of body
+                    var y = (index / numSquaresRow).floor();
 
-                  //Checking snake body
-                  for (var pos in snake){
-                    if ( pos[0] == x && pos[1] == y){
-                      isBody = true;
-                      break;
+                    //Checking snake body
+                    for (var pos in snake){
+                      if ( pos[0] == x && pos[1] == y){
+                        isBody = true;
+                        break;
+                      }
                     }
-                  }
 
-                  //Applying color to snake body, apple, and map
-                  var color;
-                  if (snake.first[0] == x && snake.first[1] == y) {
-                    color = Colors.greenAccent;
-                  }
-                  else if(isBody) {
-                    color = Colors.green[200];
-                  }
-                  else if(apple[0] == x && apple[1] == y) {
-                    color = Colors.red;
-                  }
-                  else{
-                    color = Colors.grey[200];
-                  }
+                    //Applying color to snake body, apple, and map
+                    var color;
+                    if (snake.first[0] == x && snake.first[1] == y) {
+                      color = Colors.greenAccent;
+                    }
+                    else if(isBody) {
+                      color = Colors.green[200];
+                    }
+                    else if(apple[0] == x && apple[1] == y) {
+                      color = Colors.red;
+                    }
+                    else{
+                      color = Colors.grey[200];
+                    }
 
-                  //return container for item build
-                  return Container(
-                    margin: EdgeInsets.all(1),
-                    decoration: BoxDecoration(  
-                      color: color,
-                      //color: Colors.yellow[100],
-                      shape: BoxShape.circle,
-                      border: Border.all(width: 5.0, color: Colors.white)
-                    ),
-                    // child: Padding(
-                    //   padding: EdgeInsets.all(8),
-                    //   child: Container(
-                    //     width: 20,
-                    //     height: 20,
-                    //     decoration: new BoxDecoration(  
-                    //       color: Colors.white54,
-                    //       shape: BoxShape.circle,
-                    //     )
-                    //   ),
-                    //   ),
-                  );
-                }
+                    //return container for item build
+                    return Container(
+                      margin: EdgeInsets.all(1),
+                      decoration: BoxDecoration(  
+                        color: color,
+                        //color: Colors.yellow[100],
+                        shape: BoxShape.circle,
+                        border: Border.all(width: 5.0, color: Colors.white)
+                      ),
+                      // child: Padding(
+                      //   padding: EdgeInsets.all(8),
+                      //   child: Container(
+                      //     width: 20,
+                      //     height: 20,
+                      //     decoration: new BoxDecoration(  
+                      //       color: Colors.white54,
+                      //       shape: BoxShape.circle,
+                      //     )
+                      //   ),
+                      //   ),
+                    );
+                  }
+                ),
               ),
             )
           )
