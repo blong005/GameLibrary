@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  path_provider: ^1.1.2
+  audioplayer: ^0.5.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,6 +51,7 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
       - images/msbg.jpg
+      - assets/ACNHBUBBLEGUMLIVE.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

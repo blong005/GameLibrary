@@ -141,7 +141,7 @@ void switchUser(int x){
                       ),
                     ),
                   ),
-                  Text("High Scores"),
+                  Text("High Scores", style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: .5, color: Colors.redAccent)),
                 ],
               ),
   
@@ -171,7 +171,7 @@ void switchUser(int x){
                         ),
                       ),
                     ),
-                  Text("Friends List"),
+                  Text("Friends List", style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: .5, color: Colors.greenAccent)),
                 ],
               ),
 
@@ -201,7 +201,7 @@ void switchUser(int x){
                         ),
                       ),
                     ),
-                  Text("Community Page"),
+                  Text("Community Page", style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: .5, color: Colors.blueAccent)),
                 ],
               ),
             ],
